@@ -13,9 +13,13 @@ const App = () => {
     occupation: "",
   });
 
+  const handleAddUser = (formData) => {
+    setUsers((prev) => [...prev, formData]);
+  };
+
   return (
     <div className="flex justify-around my-3">
-      <User formData={formData} setFormData={setFormData} />
+      <User formData={formData} setFormData={setFormData} handleAddUser={handleAddUser} />
       <ShowAllUser users={users} />
     </div>
   );
