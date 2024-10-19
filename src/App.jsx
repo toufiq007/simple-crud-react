@@ -17,10 +17,20 @@ const App = () => {
     setUsers((prev) => [...prev, formData]);
   };
 
+  const handleDeleteUser = (id) => {
+    console.log(id, "this is the delete user id");
+    const updateUserList = users.filter((user) => user.id !== id);
+    setUsers([...updateUserList]);
+  };
+
   return (
     <div className="flex justify-around my-3">
-      <User formData={formData} setFormData={setFormData} handleAddUser={handleAddUser} />
-      <ShowAllUser users={users} />
+      <User
+        formData={formData}
+        setFormData={setFormData}
+        handleAddUser={handleAddUser}
+      />
+      <ShowAllUser users={users} handleDeleteUser={handleDeleteUser} />
     </div>
   );
 };

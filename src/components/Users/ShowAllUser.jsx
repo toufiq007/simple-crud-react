@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const ShowAllUser = ({ users }) => {
+const ShowAllUser = ({ users, handleDeleteUser }) => {
   return (
     <div className="w-[700px] bg-blue-100">
       <h2 className="text-center">Show all user</h2>
@@ -19,7 +19,10 @@ const ShowAllUser = ({ users }) => {
               <button className="bg-blue-600 text-white px-5 py-1 rounded my-2 hover:bg-blue-800">
                 Edit
               </button>
-              <button className="bg-red-600 text-white px-5 py-1 rounded my-2 hover:bg-blue-800">
+              <button
+                onClick={() => handleDeleteUser(user.id)}
+                className="bg-red-600 text-white px-5 py-1 rounded my-2 hover:bg-blue-800"
+              >
                 Delete
               </button>
             </div>

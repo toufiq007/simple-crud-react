@@ -9,6 +9,7 @@ const User = ({ formData, setFormData, handleAddUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormData({ id: "", name: "", age: "", email: "", occupation: "" });
     handleAddUser(formData);
   };
 
