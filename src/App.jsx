@@ -1,17 +1,26 @@
 import { useState } from "react";
 import ShowAllUser from "./components/Users/ShowAllUser";
 import User from "./components/Users/User";
-import { initialUser } from "./utils/utils";
+import { initialFormData, initialUser } from "./utils/utils";
 
 const App = () => {
   const [users, setUsers] = useState(initialUser);
-  const [formData, setFormData] = useState({
-    id: "",
-    name: "",
-    email: "",
-    age: "",
-    occupation: "",
-  });
+  const [formData, setFormData] = useState(initialFormData);
+  const [selectedOccupation, setSelectedOccupation] = useState([]);
+
+  const handleCheckboxChange = (e) => {
+    const { id, checked } = e.target;
+    if (checked) {
+      setSelectedOccupation((prev) => [...prev, id]);
+    } else {
+      setSelectedOccupation((prev) => prev.filter((o) => o !== id));
+    }
+  };
+
+  const filterUser =
+    selectedOccupation.length > 0
+      ? users.filter((user) => selectedOccupation.includes(user.occupation))
+      : users;
   const handleAddOrEdit = (updateData) => {
     if (updateData.id) {
       setUsers((prev) =>
@@ -29,7 +38,7 @@ const App = () => {
     setUsers([...updateUserList]);
   };
 
-  console.log({ users });
+  // console.log({ users });
   const handleEditUser = (updateUser) => {
     setFormData(updateUser);
   };
@@ -42,9 +51,10 @@ const App = () => {
         handleAddOrEdit={handleAddOrEdit}
       />
       <ShowAllUser
-        users={users}
+        users={filterUser}
         handleDeleteUser={handleDeleteUser}
         handleEditUser={handleEditUser}
+        handleCheckboxChange={handleCheckboxChange}
       />
     </div>
   );

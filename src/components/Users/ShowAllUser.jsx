@@ -1,11 +1,32 @@
-import FilterUser from "./FilterUser";
-
 /* eslint-disable react/prop-types */
-const ShowAllUser = ({ users, handleDeleteUser, handleEditUser }) => {
+import { useState } from "react";
+import { occupucationList } from "../../utils/utils";
+const ShowAllUser = ({
+  users,
+  handleDeleteUser,
+  handleEditUser,
+  handleCheckboxChange,
+}) => {
   return (
     <div className="w-[700px] bg-blue-100">
       <h2 className="text-center">Show all user</h2>
-      <FilterUser/>
+      <div className="p-2">
+        <h2>Filter user</h2>
+        <div className="flex gap-4">
+          {occupucationList.map((o) => (
+            <div key={o.id} className="flex align-middle">
+              <label htmlFor={o.occupucation}>{o.occupucation}</label>
+              <input
+                type="checkbox"
+                className="mx-1"
+                id={o.occupucation}
+                onChange={handleCheckboxChange}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="m-2 p-1">
         {users.map((user) => (
           <div

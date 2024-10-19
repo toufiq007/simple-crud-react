@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { occupucationList } from "../../utils/utils";
+import { initialFormData, occupucationList } from "../../utils/utils";
 
 const User = ({ formData, setFormData, handleAddOrEdit }) => {
   const handleChange = (e) => {
@@ -12,7 +12,7 @@ const User = ({ formData, setFormData, handleAddOrEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleAddOrEdit(formData);
-    setFormData({ id: "", name: "", email: "", age: "", occupation: "" });
+    setFormData(initialFormData);
   };
 
   return (
@@ -74,10 +74,6 @@ const User = ({ formData, setFormData, handleAddOrEdit }) => {
               value={formData.occupation}
               onChange={handleChange}
             >
-              {/* <option value="">Select</option>
-              <option value="Student">Student</option>
-              <option value="Businessmen">Businessmen</option>
-              <option value="Employee">Employee</option> */}
               <option value="">Select</option>
               {occupucationList.map((o) => (
                 <option key={o.id} value={o.occupucation}>

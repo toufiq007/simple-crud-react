@@ -27,3 +27,11 @@ export const occupucationList = [
   { id: crypto.randomUUID(), occupucation: "Student" },
   { id: crypto.randomUUID(), occupucation: "Employee" },
 ];
+
+export const initialFormData = {
+  id: "",
+  name: "",
+  email: "",
+  age: "",
+  occupation: "",
+};
