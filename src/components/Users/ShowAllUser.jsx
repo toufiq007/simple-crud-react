@@ -1,15 +1,11 @@
 import FilterUser from "./FilterUser";
 
 /* eslint-disable react/prop-types */
-const ShowAllUser = ({
-  users,
-  handleDeleteUser,
-  handleEditUser,
-  handleCheckBoxChange,
-}) => {
+const ShowAllUser = ({ users, handleDeleteUser, handleEditUser,handleCheckBoxChange }) => {
   return (
     <div className="w-[700px] bg-blue-100">
       <h2 className="text-center">Show all user</h2>
+      <FilterUser handleCheckBoxChange={handleCheckBoxChange} />
       <FilterUser handleCheckBoxChange={handleCheckBoxChange} />
       <div className="m-2 p-1">
         {users.map((user) => (
