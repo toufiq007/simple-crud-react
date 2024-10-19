@@ -1,31 +1,5 @@
-import { useState } from "react";
-
-const initialUser = [
-  {
-    id: 1,
-    name: "Mostafizur Rahamn",
-    age: 25,
-    email: "t.limon@gamil.com",
-    occupation: "student",
-  },
-  {
-    id: 2,
-    name: "Toufiq Hasan",
-    age: 22,
-    email: "toufiq@gamil.com",
-    occupation: "business",
-  },
-  {
-    id: 1,
-    name: "Hasan sheikh",
-    age: 26,
-    email: "t.limon@gamil.com",
-    occupation: "employee",
-  },
-];
-
-const ShowAllUser = () => {
-  const [users, setUsers] = useState(initialUser);
+/* eslint-disable react/prop-types */
+const ShowAllUser = ({ users }) => {
   return (
     <div className="w-[700px] bg-blue-100">
       <h2 className="text-center">Show all user</h2>
