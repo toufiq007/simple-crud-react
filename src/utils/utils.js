@@ -1,23 +1,23 @@
 export const initialUser = [
   {
-    id: crypto.randomUUID(),
+    id: 1,
     name: "Mostafizur Rahamn",
     age: 25,
     email: "t.limon@gamil.com",
-    occupation: "student",
+    occupation: "Student",
   },
   {
-    id: crypto.randomUUID(),
+    id: 2,
     name: "Toufiq Hasan",
     age: 22,
     email: "toufiq@gamil.com",
-    occupation: "business",
+    occupation: "Businessmen",
   },
   {
-    id: crypto.randomUUID(),
+    id: 3,
     name: "Hasan sheikh",
     age: 26,
     email: "t.limon@gamil.com",
-    occupation: "employee",
+    occupation: "Employee",
   },
 ];

@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
 
-const User = ({ formData, setFormData, handleAddUser }) => {
+const User = ({ formData, setFormData, handleAddOrEdit}) => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData({ id: "", name: "", age: "", email: "", occupation: "" });
-    handleAddUser(formData);
+    handleAddOrEdit(formData);
+    setFormData({ id: "", name: "", email: "", age: "", occupation: "" });
   };
 
   return (

@@ -6,21 +6,32 @@ import { initialUser } from "./utils/utils";
 const App = () => {
   const [users, setUsers] = useState(initialUser);
   const [formData, setFormData] = useState({
-    id: crypto.randomUUID(),
+    id: "",
     name: "",
     email: "",
     age: "",
     occupation: "",
   });
-
-  const handleAddUser = (formData) => {
-    setUsers((prev) => [...prev, formData]);
+  const handleAddOrEdit = (updateData) => {
+    if (updateData.id) {
+      setUsers((prev) =>
+        prev.map((user) =>
+          user.id === updateData.id ? { ...updateData } : user
+        )
+      );
+    } else {
+      setUsers((prev) => [...prev, { ...updateData, id: crypto.randomUUID() }]);
+    }
   };
 
   const handleDeleteUser = (id) => {
-    console.log(id, "this is the delete user id");
     const updateUserList = users.filter((user) => user.id !== id);
     setUsers([...updateUserList]);
+  };
+
+  console.log({ users });
+  const handleEditUser = (updateUser) => {
+    setFormData(updateUser);
   };
 
   return (
@@ -28,9 +39,13 @@ const App = () => {
       <User
         formData={formData}
         setFormData={setFormData}
-        handleAddUser={handleAddUser}
+        handleAddOrEdit={handleAddOrEdit}
       />
-      <ShowAllUser users={users} handleDeleteUser={handleDeleteUser} />
+      <ShowAllUser
+        users={users}
+        handleDeleteUser={handleDeleteUser}
+        handleEditUser={handleEditUser}
+      />
     </div>
   );
 };
