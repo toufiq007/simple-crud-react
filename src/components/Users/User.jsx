@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 
-const User = ({ formData, setFormData, handleAddOrEdit}) => {
+import { occupucationList } from "../../utils/utils";
+
+const User = ({ formData, setFormData, handleAddOrEdit }) => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,10 +74,16 @@ const User = ({ formData, setFormData, handleAddOrEdit}) => {
               value={formData.occupation}
               onChange={handleChange}
             >
-              <option value="">Select</option>
+              {/* <option value="">Select</option>
               <option value="Student">Student</option>
               <option value="Businessmen">Businessmen</option>
-              <option value="Employee">Employee</option>
+              <option value="Employee">Employee</option> */}
+              <option value="">Select</option>
+              {occupucationList.map((o) => (
+                <option key={o.id} value={o.occupucation}>
+                  {o.occupucation}
+                </option>
+              ))}
             </select>
           </div>
           <button

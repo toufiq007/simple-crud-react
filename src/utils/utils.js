@@ -21,3 +21,9 @@ export const initialUser = [
     occupation: "Employee",
   },
 ];
+
+export const occupucationList = [
+  { id: crypto.randomUUID(), occupucation: "Businessmen" },
+  { id: crypto.randomUUID(), occupucation: "Student" },
+  { id: crypto.randomUUID(), occupucation: "Employee" },
+];
