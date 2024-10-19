@@ -30,20 +30,20 @@ const App = () => {
     setUsers([...updateUserList]);
   };
 
-  const handleCheckBoxChange = (e) => {
-    const { id, checked } = e.target;
+  // const handleCheckBoxChange = (e) => {
+  //   const { id, checked } = e.target;
 
-    if (checked) {
-      setSelectedOccupation((prev) => [...prev, id]);
-    } else {
-      setSelectedOccupation((prev) => prev.filter((o) => o !== id));
-    }
-  };
+  //   if (checked) {
+  //     setSelectedOccupation((prev) => [...prev, id]);
+  //   } else {
+  //     setSelectedOccupation((prev) => prev.filter((o) => o !== id));
+  //   }
+  // };
   console.log({ selectedOccupucation });
 
-  const filterUserArr = selectedOccupucation.length
-    ? users.filter((user) => selectedOccupucation.includes(user.occupation))
-    : users;
+  // const filterUserArr = selectedOccupucation.length
+  //   ? users.filter((user) => selectedOccupucation.includes(user.occupation))
+  //   : users;
 
   const handleCheckBoxChange = (e) => {
     const { id, checked } = e.target;
@@ -74,11 +74,11 @@ const App = () => {
       />
       <ShowAllUser
         users={filterUserArr}
-        users={filterUserArr}
+        // users={filterUserArr}
         handleDeleteUser={handleDeleteUser}
         handleEditUser={handleEditUser}
         handleCheckBoxChange={handleCheckBoxChange}
-        handleCheckBoxChange={handleCheckBoxChange}
+        // handleCheckBoxChange={handleCheckBoxChange}
       />
     </div>
   );
