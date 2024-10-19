@@ -5,22 +5,8 @@ import { initialFormData, initialUser } from "./utils/utils";
 
 const App = () => {
   const [users, setUsers] = useState(initialUser);
+  const [selectedOccupucation, setSelectedOccupation] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
-  const [selectedOccupation, setSelectedOccupation] = useState([]);
-
-  const handleCheckboxChange = (e) => {
-    const { id, checked } = e.target;
-    if (checked) {
-      setSelectedOccupation((prev) => [...prev, id]);
-    } else {
-      setSelectedOccupation((prev) => prev.filter((o) => o !== id));
-    }
-  };
-
-  const filterUser =
-    selectedOccupation.length > 0
-      ? users.filter((user) => selectedOccupation.includes(user.occupation))
-      : users;
   const handleAddOrEdit = (updateData) => {
     if (updateData.id) {
       setUsers((prev) =>
@@ -38,7 +24,22 @@ const App = () => {
     setUsers([...updateUserList]);
   };
 
-  // console.log({ users });
+  const handleCheckBoxChange = (e) => {
+    const { id, checked } = e.target;
+
+    if (checked) {
+      setSelectedOccupation((prev) => [...prev, id]);
+    } else {
+      setSelectedOccupation((prev) => prev.filter((o) => o !== id));
+    }
+  };
+  console.log({ selectedOccupucation });
+
+  const filterUserArr = selectedOccupucation.length
+    ? users.filter((user) => selectedOccupucation.includes(user.occupation))
+    : users;
+
+  console.log({ users });
   const handleEditUser = (updateUser) => {
     setFormData(updateUser);
   };
@@ -51,10 +52,10 @@ const App = () => {
         handleAddOrEdit={handleAddOrEdit}
       />
       <ShowAllUser
-        users={filterUser}
+        users={filterUserArr}
         handleDeleteUser={handleDeleteUser}
         handleEditUser={handleEditUser}
-        handleCheckboxChange={handleCheckboxChange}
+        handleCheckBoxChange={handleCheckBoxChange}
       />
     </div>
   );
